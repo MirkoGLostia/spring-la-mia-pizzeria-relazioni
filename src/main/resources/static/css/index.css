@@ -1,0 +1,84 @@
+/* general */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: bisque;
+}
+
+
+
+
+h1 {
+    margin: 20px auto;
+    text-align: center;
+    font-size: 33px;
+}
+
+.pizza-list {
+    list-style: none;
+    margin: 0 20vw;
+    padding: 20px;
+    max-width: fit-content;
+
+    background-color: rgb(2, 2, 105);
+    color: white;
+}
+
+.pizza-list h3 {
+     margin: 5px;
+     font-size: medium;
+ }
+
+.pizza-list img {
+    width: 500px;
+}
+
+.pizza-list p {
+    margin: 2px;
+}
+
+.pizza-list li {
+    padding: 10px;
+}
+
+.button-list-container {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.search-bar {
+    margin: 0 20%;
+    margin-bottom: 10px;
+}
+
+
+
+/* pizza detail */
+
+.detail-pizza-container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.detail-pizza-container img {
+    width: 500px;
+    margin-bottom: 10px;
+}
+
+
+
+/* pizza creation */
+
+.creation-container {
+    padding: 10vw;
+}
+
+
+
+
+

@@ -1,0 +1,4 @@
+INSERT INTO pizzas (description, image, name, price) VALUES('pizza alle olive', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi33D1miY2Chid2uyluVai6ump0cjXR5KbX8l0V9xNJA&s', 'pizza olive', 10.5);
+INSERT INTO pizzas (description, image, name, price) VALUES('pizza classica senza niente', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1DpyNFHhc1ULvK1iH8d7CnFnqFVQgpsbFcqZJ5i5E8A&s', 'pizza margherita', 7.5);
+INSERT INTO pizzas (description, image, name, price) VALUES('pizza con melanzane, zucchine e funghi', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1eMdIC8SmlfyKnY91AAvijv_aNGi3I4n7NG6wLPYZG8Xb_iD9Lhkgad5f2-lMOy5DARE&usqp=CAU', 'pizza boscaiola', 7.5);
+INSERT INTO pizzas (description, image, name, price) VALUES('pizza carciofi, olive e funghi', 'https://pizzeriaborgoclio.com/wp-content/uploads/2021/03/01_pizze-33-cm_0096-web.gif', 'pizza montagnina', 7.5);

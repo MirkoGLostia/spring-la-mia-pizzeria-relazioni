@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<section th:fragment="searchFragment">
+    <div class="search-bar">
+        <form th:action="@{/pizza-list}" method="GET">
+            <div class="input-group">
+                <label class="p-2" for="searchpizza">search a pizza</label>
+                <input class="form-control" id="searchpizza" type="text"  th:placeholder="${param.search}" name="search">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+</body>
+</html>
