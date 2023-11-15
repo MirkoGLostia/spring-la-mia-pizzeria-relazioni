@@ -16,6 +16,29 @@
 </div>
 
 
+
+
+
+
+<section th:object="${pizza}">
+
+    <h2>Offers
+        <a href="#">add</a>
+    </h2>
+    <div th:if="*{offers.size() == 0}" class="alert alert-info">No offers available</div>
+
+    <ul th:if="*{offers.size() > 0}">
+        <li>
+            offers
+        </li>
+    </ul>
+</section>
+
+
+
+
+
+
 <footer th:replace="fragments/macroPiece/footer :: footFragment"></footer>
 
 

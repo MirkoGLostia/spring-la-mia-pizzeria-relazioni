@@ -26,7 +26,7 @@
         <p th:text="${pizza.getDescription()}"></p>
         <span>[['prezzo: ' + ${pizza.getPrice()} + ' €']]</span>
         <div class="button-list-container">
-            <a class="btn btn-primary" th:href="@{/pizza-list/detail/{id}(id=${pizza.getId()})}"> details </a>
+            <a class="btn btn-primary" th:href="@{/pizza/detail/{id}(id=${pizza.getId()})}"> details </a>
             <a class="btn btn-primary" th:href="@{/pizza/edit/{id}(id=${pizza.getId()})}"> modify </a>
             <form method="POST" th:action="@{/pizza/delete/{id}(id=${pizza.getId()})}"
                   onsubmit="return confirm('Are you sure?')">

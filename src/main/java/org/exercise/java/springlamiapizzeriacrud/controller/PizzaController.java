@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/pizza")
 public class PizzaController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class PizzaController {
     private PizzaService pizzaService;
 
 
-    @GetMapping ("pizza-list")
+    @GetMapping
     public String pizzaMenu(@RequestParam Optional<String> search, Model model) {
         model.addAttribute("area", "pizza-list");
         model.addAttribute("pizzaList", pizzaService.getPizzaList(search));
@@ -38,7 +38,7 @@ public class PizzaController {
     }
 
 
-    @GetMapping("pizza-list/detail/{id}")
+    @GetMapping("/detail/{id}")
     public String pizzaDetail(@PathVariable Integer id, Model model) {
         model.addAttribute("area", "detail-pizza");
 
@@ -52,14 +52,14 @@ public class PizzaController {
     }
 
 
-    @GetMapping("pizza/create")
+    @GetMapping("/create")
     public String createPizza(Model model) {
         model.addAttribute("area", "pizza-create");
         model.addAttribute("pizza", new Pizza());
         return "pizzas/createEdit";
     }
 
-    @PostMapping("pizza/create")
+    @PostMapping("/create")
     public String doCreatePizza(Model model, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult) {
         model.addAttribute("area", "pizza-create");
 
@@ -69,12 +69,12 @@ public class PizzaController {
 
 
         Pizza savedPizza = pizzaRepository.save(formPizza);
-        return "redirect:/pizza-list/detail/" + savedPizza.getId();
+        return "redirect:/pizza/detail/" + savedPizza.getId();
     }
 
 
 
-    @GetMapping("pizza/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String editPizza(@PathVariable Integer id, Model model) {
         try {
             model.addAttribute("pizza", pizzaService.getPizzaById(id));
@@ -86,14 +86,14 @@ public class PizzaController {
 
 
 
-    @PostMapping("pizza/edit/{id}")
+    @PostMapping("/edit/{id}")
     public String doEditPizza(@PathVariable Integer id, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "pizzas/createEdit";
         }
         try {
             Pizza editPizza = pizzaService.editPizza(formPizza);
-            return "redirect:/pizza-list/detail/" + editPizza.getId();
+            return "redirect:/pizza/detail/" + editPizza.getId();
         } catch (PizzaNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }
@@ -102,14 +102,14 @@ public class PizzaController {
 
 
 
-    @PostMapping("pizza/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         try {
             Pizza pizzaToDelete = pizzaService.getPizzaById(id);
             pizzaService.deletePizza(id);
             redirectAttributes.addFlashAttribute("message",
                     "Pizza " + pizzaToDelete.getName() + " deleted!");
-            return "redirect:/pizza-list";
+            return "redirect:/pizza";
         } catch (PizzaNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, e.getMessage());
         }

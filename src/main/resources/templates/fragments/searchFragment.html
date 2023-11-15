@@ -4,7 +4,7 @@
 
 <section th:fragment="searchFragment">
     <div class="search-bar">
-        <form th:action="@{/pizza-list}" method="GET">
+        <form th:action="@{/pizza}" method="GET">
             <div class="input-group">
                 <label class="p-2" for="searchpizza">search a pizza</label>
                 <input class="form-control" id="searchpizza" type="text"  th:placeholder="${param.search}" name="search">
