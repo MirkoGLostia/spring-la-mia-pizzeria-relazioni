@@ -20,7 +20,10 @@
 
 <ul class="pizza-list" th:if="${pizzaList.size() > 0}">
     <li th:each="pizza : ${pizzaList}">
-        <h3 th:text="${pizza.getName()}"></h3>
+        <h3>
+            <span th:text="${pizza.getName()}"></span>
+            <span th:unless="${pizza.offers.size() == 0}">**** offer up ****</span>
+        </h3>
         <br>
         <img th:src="${pizza.getImage()}" alt="">
         <p th:text="${pizza.getDescription()}"></p>

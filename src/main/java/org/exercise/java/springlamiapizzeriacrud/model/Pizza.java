@@ -30,7 +30,7 @@ public class Pizza {
     private BigDecimal price;
 
     @OneToMany(mappedBy = "pizza")
-    private List<SpecialOffer> offers = new ArrayList<>();
+    private List<Offer> offers = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -72,11 +72,11 @@ public class Pizza {
         this.price = price;
     }
 
-    public List<SpecialOffer> getOffers() {
+    public List<Offer> getOffers() {
         return offers;
     }
 
-    public void setOffers(List<SpecialOffer> offers) {
+    public void setOffers(List<Offer> offers) {
         this.offers = offers;
     }
 }

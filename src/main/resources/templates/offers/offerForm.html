@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="isEdit=${offer.id != null}">
+<head>
+    <th:block th:insert="fragments/headFragment :: headFragment(${isEdit ? 'Edit Pizza' : 'Create New Pizza'})"></th:block>
+</head>
+<body>
+
+
+<header th:replace="fragments/macroPiece/header :: headerMacro(${isEdit ? 'EDIT OFFER' : 'CREATE OFFER'}, ${area})"></header>
+
+
+
+<form th:with="actionUrl=${isEdit ? '/offer/edit/'+offer.id : '/offer/create'}" id="offer-form" th:action="@{${actionUrl}}" method="POST" th:object="${offer}" class="row mx-2">
+
+    <input type="hidden" th:field="*{pizza}">
+
+    <div class="col-6">
+        <label th:for="title" class="form-label">Offer title</label>
+        <input type="text" class="form-control" id="title" th:field="*{title}" th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('title')}" class="invalid-feedback">
+            <ul>
+                <li th:each="err : ${#fields.errors('title')}" th:text="${err}"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <label th:for="startOffer" class="form-label">Offer start date</label>
+        <input type="text" class="form-control" id="startOffer" th:field="*{startOffer}" th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('startOffer')}" class="invalid-feedback">
+            <ul>
+                <li th:each="err : ${#fields.errors('startOffer')}" th:text="${err}"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <label th:for="endOffer" class="form-label">Offer end date</label>
+        <input type="text" class="form-control" id="endOffer" th:field="*{endOffer}" th:errorClass="is-invalid">
+        <div th:if="${#fields.hasErrors('endOffer')}" class="invalid-feedback">
+            <ul>
+                <li th:each="err : ${#fields.errors('endOffer')}" th:text="${err}"></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="col-12">
+        <button class="btn btn-primary my-3" type="submit">Save</button>
+        <a th:href="@{/pizza/detail/{pizzaId}(pizzaId=*{pizza.id})}" class="btn btn-primary">Cancel</a>
+    </div>
+</form>
+
+
+
+<footer th:replace="fragments/macroPiece/footer :: footFragment"></footer>
+
+
+</body>
+</html>
