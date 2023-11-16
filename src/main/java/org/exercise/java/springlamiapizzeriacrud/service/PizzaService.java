@@ -1,7 +1,9 @@
 package org.exercise.java.springlamiapizzeriacrud.service;
 
 import org.exercise.java.springlamiapizzeriacrud.exceptions.PizzaNotFoundException;
+import org.exercise.java.springlamiapizzeriacrud.model.Offer;
 import org.exercise.java.springlamiapizzeriacrud.model.Pizza;
+import org.exercise.java.springlamiapizzeriacrud.repository.OfferRepository;
 import org.exercise.java.springlamiapizzeriacrud.repository.PizzaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ public class PizzaService {
 
     @Autowired
     private PizzaRepository pizzaRepository;
+    @Autowired
+    private OfferRepository offerRepository;
 
     public List<Pizza> getPizzaList(Optional<String> search) {
         if (search.isPresent()) {
@@ -50,6 +54,13 @@ public class PizzaService {
 
 
     public void deletePizza(Integer id) {
+
+        Pizza pizza = pizzaRepository.getReferenceById(id);
+
+        for (Offer o : pizza.getOffers()) {
+            offerRepository.delete(o);
+        }
+
         pizzaRepository.deleteById(id);
     }
 

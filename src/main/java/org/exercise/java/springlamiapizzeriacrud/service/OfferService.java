@@ -40,5 +40,9 @@ public class OfferService {
         return offerRepository.findById(id).orElseThrow(() -> new OfferNotFoundException("Offer with id " + id + " not found"));
     }
 
+    public void deleteOffer(Integer id) {
+        offerRepository.deleteById(id);
+    }
+
 
 }
