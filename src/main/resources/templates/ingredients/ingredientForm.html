@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:insert="fragments/headFragment :: headFragment(Ingredients)"></th:block>
+</head>
+<body>
+
+
+<header th:replace="fragments/macroPiece/header :: headerMacro('Ingredient list', ${area})"></header>
+
+
+
+<div class="container">
+    <hr>
+    <section>
+        <form id="ingredient-form" th:action="@{/ingredient}" method="POST" th:object="${ingredient}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Ingredient name</label>
+                <input type="text" class="form-control" id="name" th:field="${ingredient.name}" th:errorClass="is-invalid">
+                <div th:if="${#fields.hasErrors('name')}" class="invalid-feedback">
+                    <ul>
+                        <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+                    </ul>
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Add ingredient</button>
+        </form>
+    </section>
+    <section class="mt-4">
+        <ul class="list-group">
+            <li th:each="ingredient : ${ingredientList}" th:text="${ingredient.name}" class="list-group-item"
+            ></li>
+        </ul>
+    </section>
+</div>
+
+
+
+<footer th:replace="fragments/macroPiece/footer :: footFragment"></footer>
+
+
+</body>
+</html>

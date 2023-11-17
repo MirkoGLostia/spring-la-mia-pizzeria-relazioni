@@ -1,9 +1,8 @@
-Fri Nov 17 14:18:52 CET 2023 : Apache Derby Network Server - 10.16.1.1 - (1901046) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Fri Nov 17 14:19:15 CET 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018b-dd6f-2c43-00000e97d090 
-on database directory C:\Users\fress\Desktop\archivio\experis_JAVA\projects\spring-la-mia-pizzeria-relazioni\db_pizzeria_experis_v2 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2a139a55 
-Loaded from file:/C:/Derby/db-derby-10.16.1.1-bin/lib/derby.jar
+Fri Nov 17 15:30:38 CET 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.16.1.1 - (1901046): instance a816c00e-018b-ddb0-dfb8-000001074a00 
+on database directory C:\Users\fress\Desktop\archivio\experis_JAVA\projects\spring-la-mia-pizzeria-relazioni\db_pizzeria_experis_v2 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@1d44bcfa 
+Loaded from file:/C:/Users/fress/.m2/repository/org/apache/derby/derby/10.16.1.1/derby-10.16.1.1.jar
 java.vendor=Eclipse Adoptium
 java.runtime.version=17.0.8.1+1
 user.dir=C:\Users\fress\Desktop\archivio\experis_JAVA\projects\spring-la-mia-pizzeria-relazioni
