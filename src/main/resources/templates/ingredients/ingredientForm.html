@@ -10,8 +10,13 @@
 
 
 
+
 <div class="container">
     <hr>
+    <div th:if="${message !=null}" class="alert alert-success alert-dismissible fade show">
+        <span th:text="${message}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <section>
         <form id="ingredient-form" th:action="@{/ingredient}" method="POST" th:object="${ingredient}">
             <div class="mb-3">
@@ -28,8 +33,12 @@
     </section>
     <section class="mt-4">
         <ul class="list-group">
-            <li th:each="ingredient : ${ingredientList}" th:text="${ingredient.name}" class="list-group-item"
-            ></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center" th:each="ingredient : ${ingredientList}">
+                <span th:text="${ingredient.name}"></span>
+                <form class="d-inline" method="POST" th:action="@{/ingredient/delete/{id}(id=${ingredient.getId()})}" onsubmit="return confirm('Are you sure?')">
+                    <button type="submit" class="btn btn-primary"> delete </button>
+                </form>
+            </li>
         </ul>
     </section>
 </div>

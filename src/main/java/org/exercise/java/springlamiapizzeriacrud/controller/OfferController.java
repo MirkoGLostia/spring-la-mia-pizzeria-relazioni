@@ -4,6 +4,7 @@ package org.exercise.java.springlamiapizzeriacrud.controller;
 import jakarta.validation.Valid;
 import org.exercise.java.springlamiapizzeriacrud.exceptions.OfferNotFoundException;
 import org.exercise.java.springlamiapizzeriacrud.exceptions.PizzaNotFoundException;
+import org.exercise.java.springlamiapizzeriacrud.model.Ingredient;
 import org.exercise.java.springlamiapizzeriacrud.model.Offer;
 import org.exercise.java.springlamiapizzeriacrud.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/offer")
@@ -66,6 +68,15 @@ public class OfferController {
         Offer savedOffer = offerService.saveOffer(formOffer);
 
         return "redirect:/pizza/detail/" + formOffer.getPizza().getId();
+    }
+
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
+            Offer offerToDelete = offerService.getOffer(id);
+            offerService.deleteOffer(id);
+            redirectAttributes.addFlashAttribute("message",
+                    "Offer " + offerToDelete.getTitle() + " deleted!");
+            return "redirect:/pizza/detail/" + offerToDelete.getPizza().getId();
     }
 
 
