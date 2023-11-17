@@ -13,6 +13,12 @@
     <p>Descrizione: <br> [[${pizza.description}]]</p>
     <br>
     <span th:text="${'prezzo: ' + pizza.price + ' €'}"></span>
+
+    <h3>Ingredients</h3>
+    <ul th:if="${pizza.ingredients.size() > 0}">
+        <li th:each="ingredientObj : ${pizza.ingredients}" th:text="${ingredientObj.name}"></li>
+    </ul>
+    <div th:unless="*{pizza.ingredients.size() > 0}" class="alert alert-info">The list is empty</div>
 </div>
 
 
